@@ -224,7 +224,7 @@
     border-radius: 50px;
 }
 .message__user {
-    margin-right: 30px;
+    margin-right: 25px;
 }
 .message__user .image-block {
     display: flex;
@@ -234,6 +234,7 @@
 .photo {
 }
 .message__text {
+    font-family: 'Varela Round';
     color: rgb(245, 245, 245);
 }
 .write-block {

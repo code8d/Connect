@@ -80,6 +80,15 @@
     padding: 0 25px;
     margin-bottom: 20px;
 }
+.input::placeholder {
+    color: #1e1e1e;
+}
+.input.active {
+    border: 2px solid #e64f4f;
+}
+.input.active::placeholder {
+    color: #e64f4f;
+}
 .input:focus {
     box-shadow: 0 3px 4px rgba(0, 0, 0, .05);
 }
@@ -225,6 +234,7 @@
 .photo {
 }
 .message__text {
+    color: rgb(245, 245, 245);
 }
 .write-block {
     background: #3E3953;

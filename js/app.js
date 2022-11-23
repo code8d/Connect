@@ -1,8 +1,12 @@
+import leave from './leave.js'
+leave()
+
 const usernameInput = document.querySelectorAll('input')[0]
 const passwordInput = document.querySelectorAll('input')[1]
 const loginButton = document.querySelector('button')
 
 loginButton.addEventListener('click', logIn)
+document.addEventListener('keydown', keydownLogIn)
 
 const users = [{
     name: 'code8d',
@@ -53,6 +57,12 @@ function createUser() {
             }
 
         }
+    }
+}
+
+function keydownLogIn(e) {
+    if (e.key.toLowerCase() === 'enter') {
+        logIn()
     }
 }
 

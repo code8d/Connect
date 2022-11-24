@@ -14,6 +14,11 @@ const users = [{
     password: '1234'
 }]
 
+const user = {
+    name: usernameInput,
+    password: passwordInput
+}
+
 function check() {
     function checkLoginButton() {
         if (loginButton === null) {
@@ -44,12 +49,28 @@ function keydownLogIn(e) {
 }
 
 function logIn() {
-    users.forEach(u => {
-        
-        if (u.name === usernameInput.value && u.password === passwordInput.value) {
-            window.location = 'http://127.0.0.1:5500/index.html'
-        }   else {
-            console.log('Enter valid authorization data!')
+
+    for (let key in localStorage) {
+        if (localStorage.hasOwnProperty(key)) {
+
+            let u = JSON.parse(localStorage[key])
+            if (u.name === usernameInput.value && u.password === passwordInput.value) {
+                window.location = 'http://127.0.0.1:5500/index.html'
+                localStorage.setItem('currentUser', u.name)
+            }   else {
+                console.log('Enter valid authorization data!')
+            }
         }
-    })
+    }
 }
+
+function getProfileData() {
+    const name = document.querySelector('.user__name')
+
+    if (name === null) {
+        return
+    }   else {
+        name.textContent = localStorage.getItem('currentUser')
+    }
+}
+getProfileData()

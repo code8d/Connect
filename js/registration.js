@@ -1,4 +1,4 @@
-const createUser = (username, password, users) => {
+const createUser = (username, password) => {
 
     if (username.value.length === 0 && password.value.length === 0) {
         username.classList.add('active')
@@ -21,28 +21,32 @@ const createUser = (username, password, users) => {
             password: password.value
         }
 
-        if (users.length < 1) {
-            users.push(user)
-
+        if (localStorage.length < 1) {
+            localStorage.setItem(`user${randomNumber()}`, JSON.stringify(user))
         }   else {
             let check = false
 
-            users.forEach(u => {
+            for (let key in localStorage) {
+                if (localStorage.hasOwnProperty(key)) {
 
-                if (u.name === user.name) {
-                    console.log('This username already exists.')
-                    check = false
-                }   else {
-                    check = true
+                    let u = localStorage.getItem(key)
+                    if (u.name === user.name) {
+                        console.log('This username already exists.')
+                        check = false
+                    }   else {
+                        check = true
+                    }
                 }
-            })
-
-            if (check) {
-                users.push(user)
             }
 
-            console.log(users)
+            if (check) {
+                localStorage.setItem(`user${randomNumber()}`, JSON.stringify(user))
+            }
         }
+    }
+
+    function randomNumber() {
+        return Math.random()
     }
 }
 

@@ -9,13 +9,6 @@ const passwordInput = document.querySelectorAll('input')[1]
 const loginButton = document.querySelector('.login')
 const signupButton = document.querySelector('.signup')
 
-document.addEventListener('keydown', keydownLogIn)
-
-const users = [{
-    name: 'code8d',
-    password: '1234'
-}]
-
 const user = {
     name: usernameInput,
     password: passwordInput
@@ -24,16 +17,17 @@ const user = {
 function check() {
     function checkLoginButton() {
         if (loginButton === null) {
-            return 0
+            return
         }   else {
             loginButton.addEventListener('click', logIn)
+            document.addEventListener('keydown', keydownLogIn)
         }
     }
     checkLoginButton()
 
     function checkSignupButton() {
         if (signupButton === null) {
-            return 0
+            return
         }   else {
             signupButton.addEventListener('click', () => {
                 createUser(usernameInput, passwordInput, users)
@@ -51,7 +45,6 @@ function keydownLogIn(e) {
 }
 
 function logIn() {
-
     for (let key in localStorage) {
         if (localStorage.hasOwnProperty(key)) {
 
@@ -59,9 +52,7 @@ function logIn() {
             if (u.name === usernameInput.value && u.password === passwordInput.value) {
                 window.location = 'http://127.0.0.1:5500/index.html'
                 localStorage.setItem('currentUser', u.name)
-            }   else {
-                console.log('Enter valid authorization data!')
-            }
+            }   else console.log('Enter valid authorization data!')
         }
     }
 }
@@ -71,8 +62,6 @@ function getProfileData() {
 
     if (name === null) {
         return
-    }   else {
-        name.textContent = localStorage.getItem('currentUser')
-    }
+    }   else name.textContent = localStorage.getItem('currentUser')
 }
 getProfileData()

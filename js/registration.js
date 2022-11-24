@@ -33,9 +33,7 @@ const createUser = (username, password) => {
                     if (u.name === user.name) {
                         console.log('This username already exists.')
                         check = false
-                    }   else {
-                        check = true
-                    }
+                    }   else check = true
                 }
             }
 

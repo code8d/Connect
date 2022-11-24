@@ -10,8 +10,6 @@ export const leave = () => {
             window.location = 'http://127.0.0.1:5500/authorization.html'
             localStorage.removeItem('currentUser')
         }
-
-        return 0
     }
 }
 

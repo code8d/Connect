@@ -1,6 +1,8 @@
 import leave from './leave.js'
 leave()
 import createUser from './registration.js'
+import message from './message.js'
+message()
 
 const usernameInput = document.querySelectorAll('input')[0]
 const passwordInput = document.querySelectorAll('input')[1]

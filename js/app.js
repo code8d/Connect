@@ -1,11 +1,12 @@
 import leave from './leave.js'
 leave()
+import createUser from './registration.js'
 
 const usernameInput = document.querySelectorAll('input')[0]
 const passwordInput = document.querySelectorAll('input')[1]
 const loginButton = document.querySelector('.login')
+const signupButton = document.querySelector('.signup')
 
-loginButton.addEventListener('click', logIn)
 document.addEventListener('keydown', keydownLogIn)
 
 const users = [{
@@ -13,52 +14,28 @@ const users = [{
     password: '1234'
 }]
 
-function createUser() {
-    if (usernameInput.value.length === 0 && passwordInput.value.length === 0) {
-        usernameInput.classList.add('active')
-        usernameInput.placeholder = 'Enter username'
-        passwordInput.classList.add('active')
-        passwordInput.placeholder = 'Enter password'
-        
-        setTimeout(() => {
-            usernameInput.classList.remove('active')
-            usernameInput.placeholder = 'Username'
-            passwordInput.classList.remove('active')
-            passwordInput.placeholder = 'Password'
-        }, 2000)
-
-        return
-    }   else {
-
-        const user = {
-            name: usernameInput.value,
-            password: passwordInput.value
-        }
-
-        if (users.length < 1) {
-            users.push(user)
-
+function check() {
+    function checkLoginButton() {
+        if (loginButton === null) {
+            return 0
         }   else {
-            let check = false
-
-            users.forEach(u => {
-
-                if (u.name === user.name) {
-                    check = false
-                }   else {
-                    check = true
-                }
-            })
-
-            console.log(users)
-
-            if (check) {
-                users.push(user)
-            }
-
+            loginButton.addEventListener('click', logIn)
         }
     }
+    checkLoginButton()
+
+    function checkSignupButton() {
+        if (signupButton === null) {
+            return 0
+        }   else {
+            signupButton.addEventListener('click', () => {
+                createUser(usernameInput, passwordInput, users)
+            })
+        }
+    }
+    checkSignupButton()
 }
+check()
 
 function keydownLogIn(e) {
     if (e.key.toLowerCase() === 'enter') {

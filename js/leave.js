@@ -2,12 +2,11 @@ export const leave = () => {
     const leaveButton = document.querySelector('.button__leave')
 
     if (leaveButton === null || leaveButton === undefined) {
-        return 0
+        return
     }   else {
         leaveButton.addEventListener('click', leaveFrom)
 
         function leaveFrom() {
-            console.log('working')
             window.location = 'http://127.0.0.1:5500/authorization.html'
         }
 

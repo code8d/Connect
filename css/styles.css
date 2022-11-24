@@ -107,7 +107,7 @@
     justify-content: center;
 }
 .link:not(:last-child) {
-    margin-right: 15px;
+    margin-right: 10px;
 }
 .link {
     font-size: 16px;
@@ -278,4 +278,12 @@
     width: 20px;
     height: 20px;
     object-fit: cover;
+}
+
+#login .link:nth-child(1) {
+    color: #5D4584;
+}
+
+#signup .link:nth-child(2) {
+    color: #5D4584;
 }

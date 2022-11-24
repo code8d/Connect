@@ -3,7 +3,7 @@ leave()
 
 const usernameInput = document.querySelectorAll('input')[0]
 const passwordInput = document.querySelectorAll('input')[1]
-const loginButton = document.querySelector('button')
+const loginButton = document.querySelector('.login')
 
 loginButton.addEventListener('click', logIn)
 document.addEventListener('keydown', keydownLogIn)
